@@ -1,0 +1,20 @@
+import random
+
+print("💬 好友聊天程序启动！")
+print("输入 /emoji 随机发送表情")
+print("输入 /quit 退出聊天")
+
+emojis = ["😀", "😂", "🥹", "❤️", "👍", "🎉", "🤔", "🐱", "✨"]
+
+while True:
+    msg = input("你：")
+
+    if msg == "/quit":
+        print("聊天结束，拜拜！👋")
+        break
+
+    elif msg == "/emoji":
+        print("你发送了：" + random.choice(emojis))
+
+    else:
+        print("你发送了：" + msg)
