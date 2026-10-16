@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emoji 好友聊天室 💌</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff5f7;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .chat {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 4px 18px #e8cbd5;
+    }
+
+    h2 {
+      text-align: center;
+      color: #e76f91;
+    }
+
+    #messages {
+      height: 350px;
+      overflow-y: auto;
+      background: #fff9fb;
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    .message {
+      background: #ffe0e9;
+      padding: 10px 14px;
+      border-radius: 15px;
+      margin: 8px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .emoji-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    button {
+      border: none;
+      border-radius: 12px;
+      padding: 10px;
+      cursor: pointer;
+      background: #ffb6c8;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #ff91af;
+    }
+
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #f0bdcc;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .send {
+      width: 100%;
+      background: #e76f91;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat">
+    <h2>💌 Emoji 好友聊天室</h2>
+
+    <div id="messages">
+      <div class="message">系统：今天也要开心呀！ 🌷</div>
+    </div>
+
+    <div class="emoji-list">
+      <button onclick="addEmoji('😀')">😀</button>
+      <button onclick="addEmoji('🥹')">🥹</button>
+      <button onclick="addEmoji('❤️')">❤️</button>
+      <button onclick="addEmoji('😂')">😂</button>
+      <button onclick="addEmoji('🐱')">🐱</button>
+      <button onclick="addEmoji('✨')">✨</button>
+      <button onclick="addEmoji('🎉')">🎉</button>
+      <button onclick="addEmoji('🫶')">🫶</button>
+    </div>
+
+    <input id="input" placeholder="输入消息或选择 Emoji..."
+           onkeydown="if(event.key==='Enter') sendMessage()">
+
+    <button class="send" onclick="sendMessage()">发送 💌</button>
+  </div>
+
+  <script>
+    const input = document.getElementById("input");
+    const messages = document.getElementById("messages");
+
+    function addEmoji(emoji) {
+      input.value += emoji;
+      input.focus();
+    }
+
+    function sendMessage() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      const message = document.createElement("div");
+      message.className = "message";
+      message.textContent = "我： " + text;
+
+      messages.appendChild(message);
+      messages.scrollTop = messages.scrollHeight;
+      input.value = "";
+      input.focus();
+    }
+  </script>
+</body>
+</html>
